@@ -26,8 +26,9 @@ with textcontainer:
     logo_path = "medi.png"
     st.sidebar.image(logo_path,width=300)
 
- 
-load_dotenv()
+
+load_dotenv(st.secrets["OPENAI_API_KEY"])
+
  
 def main():
     st.header("Chat with PDF 💬")
