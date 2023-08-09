@@ -23,11 +23,15 @@ import toml
 
 
 
+
 # Sidebar contents
 textcontainer = st.container()
 with textcontainer:
     logo_path = "medi.png"
+    logoo_path = "pageee.png"
     st.sidebar.image(logo_path,width=300)
+    st.sidebar.image(logoo_path,width=240)
+    
 st.sidebar.subheader("Suggestions:")
 questions = [
         "Donne moi un résumé du rapport ",
@@ -51,6 +55,8 @@ def main():
     # st.write(pdf)
     if pdf is not None:
         pdf_reader = PdfReader(pdf)
+        
+
 
         text = ""
         for page in pdf_reader.pages:
