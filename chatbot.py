@@ -30,7 +30,7 @@ with textcontainer:
     logo_path = "medi.png"
     logoo_path = "pageee.png"
     st.sidebar.image(logo_path,width=250)
-    st.sidebar.image(logoo_path,width=100)
+    st.sidebar.image(logoo_path,width=120)
     
 st.sidebar.subheader("Suggestions:")
 questions = [
