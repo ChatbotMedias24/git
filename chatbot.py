@@ -46,7 +46,7 @@ questions = [
 load_dotenv(st.secrets["OPENAI_API_KEY"])
  
 def main():
-    st.header("Chat with PDF 💬")
+    st.header("Rapport Marocains du Monde 💬")
  
  
     # upload a PDF file
