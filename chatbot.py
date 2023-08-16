@@ -20,7 +20,7 @@ from langchain.prompts import (
     MessagesPlaceholder
 )
 import toml
-
+import docx2txt
 
 
 
@@ -29,8 +29,8 @@ textcontainer = st.container()
 with textcontainer:
     logo_path = "medi.png"
     logoo_path = "pageee.png"
-    st.sidebar.image(logo_path,width=250)
-    st.sidebar.image(logoo_path,width=120)
+    st.sidebar.image(logo_path,width=200)
+    st.sidebar.image(logoo_path,width=100)
     
 st.sidebar.subheader("Suggestions:")
 questions = [
@@ -47,24 +47,13 @@ load_dotenv(st.secrets["OPENAI_API_KEY"])
  
 def main():
     st.header("Rapport Marocains du Monde 💬")
- 
- 
     # upload a PDF file
-    pdf = '𝐌𝐚𝐫𝐨𝐜𝐚𝐢𝐧𝐬.pdf'
+    docx = '𝐌𝐚𝐫𝐨𝐜𝐚𝐢𝐧𝐬.docx'
  
     # st.write(pdf)
-    if pdf is not None:
-        pdf_reader = PdfReader(pdf)
-        
-
-
-        text = ""
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-
+    if docx is not None:
+        text = docx2txt.process(docx)
          # Get the first page as an image
-
-        
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
             chunk_overlap=200,
@@ -75,8 +64,6 @@ def main():
         # # embeddings
         # st.write(chunks)
  
-       
-        
         embeddings = OpenAIEmbeddings()
         VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
         with open("aaa.pkl", "wb") as f:
